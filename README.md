@@ -2,7 +2,7 @@
 
 A remake of a project developed during my Master in Quantitative Finance. The goal is to use machine learning to explain the relationship between financial news headlines and intraday price movements — specifically, to predict whether a stock went **UP**, stayed **FLAT**, or went **DOWN** on the same day the news was published (*nowcasting*).
 
-The original project can be found in my [Text Mining](https://github.com/YOUR_USERNAME/TextMining) repository.
+The original project can be found in my [Text Mining](https://github.com/MarcoPace00/TextMining) repository.
 
 ---
 
