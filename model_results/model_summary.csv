@@ -1,0 +1,4 @@
+Model,Val F1,Best
+FinBERT,0.597,
+RoBERTa,0.644,✓
+DistilBERT,0.6056,
