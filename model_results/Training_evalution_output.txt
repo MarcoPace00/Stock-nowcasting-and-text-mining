@@ -1,0 +1,125 @@
+Using device: cpu
+Total samples: 5324
+Class distribution:
+ var_class
+-1    1713
+ 0    1791
+ 1    1820
+Name: count, dtype: int64
+
+Split — train: 3726 | val: 799 | test: 799
+
+============================================================
+Training FinBERT  (ProsusAI/finbert)
+============================================================
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 201/201 [00:00<00:00, 19454.37it/s]
+  Epoch 1/3  loss=1.1171  val_F1=0.5933
+  Epoch 2/3  loss=0.8051  val_F1=0.5970
+  Epoch 3/3  loss=0.6714  val_F1=0.5670
+
+  Best val F1-macro : 0.5970
+  Test classification report:
+              precision    recall  f1-score   support
+
+        DOWN       0.71      0.47      0.56       257
+        FLAT       0.49      0.66      0.56       269
+          UP       0.62      0.61      0.61       273
+
+    accuracy                           0.58       799
+   macro avg       0.61      0.58      0.58       799
+weighted avg       0.60      0.58      0.58       799
+
+
+============================================================
+Training RoBERTa  (roberta-base)
+============================================================
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 197/197 [00:00<00:00, 3680.26it/s]
+[transformers] RobertaForSequenceClassification LOAD REPORT from: roberta-base
+Key                        | Status     | Details
+---------------------------+------------+--------
+lm_head.layer_norm.weight  | UNEXPECTED |        
+lm_head.dense.bias         | UNEXPECTED |        
+lm_head.bias               | UNEXPECTED |        
+lm_head.layer_norm.bias    | UNEXPECTED |        
+lm_head.dense.weight       | UNEXPECTED |        
+classifier.out_proj.weight | MISSING    |        
+classifier.out_proj.bias   | MISSING    |        
+classifier.dense.weight    | MISSING    |        
+classifier.dense.bias      | MISSING    |        
+
+Notes:
+- UNEXPECTED:   can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:      those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+  Epoch 1/3  loss=1.0260  val_F1=0.5824
+  Epoch 2/3  loss=0.8119  val_F1=0.6440
+  Epoch 3/3  loss=0.7291  val_F1=0.6200
+
+  Best val F1-macro : 0.6440
+  Test classification report:
+              precision    recall  f1-score   support
+
+        DOWN       0.76      0.48      0.59       257
+        FLAT       0.50      0.78      0.61       269
+          UP       0.67      0.54      0.60       273
+
+    accuracy                           0.60       799
+   macro avg       0.65      0.60      0.60       799
+weighted avg       0.65      0.60      0.60       799
+
+
+============================================================
+Training DistilBERT  (distilbert-base-uncased)
+============================================================
+config.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 483/483 [00:00<00:00, 595kB/s]
+C:\Users\volpe\AppData\Roaming\Python\Python314\site-packages\huggingface_hub\file_download.py:138: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\volpe\.cache\huggingface\hub\models--distilbert-base-uncased. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+tokenizer_config.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 48.0/48.0 [00:00<00:00, 79.2kB/s]
+vocab.txt: 232kB [00:00, 1.73MB/s]
+tokenizer.json: 466kB [00:00, 10.6MB/s]
+model.safetensors: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 268M/268M [01:05<00:00, 4.12MB/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 5938.42it/s]
+[transformers] DistilBertForSequenceClassification LOAD REPORT from: distilbert-base-uncased
+Key                     | Status     | Details
+------------------------+------------+--------
+vocab_layer_norm.weight | UNEXPECTED |        
+vocab_projector.bias    | UNEXPECTED |        
+vocab_layer_norm.bias   | UNEXPECTED |        
+vocab_transform.bias    | UNEXPECTED |        
+vocab_transform.weight  | UNEXPECTED |        
+classifier.weight       | MISSING    |        
+pre_classifier.bias     | MISSING    |        
+pre_classifier.weight   | MISSING    |        
+classifier.bias         | MISSING    |        
+
+Notes:
+- UNEXPECTED:   can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:      those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+  Epoch 1/3  loss=1.0295  val_F1=0.5714
+  Epoch 2/3  loss=0.8118  val_F1=0.6050
+  Epoch 3/3  loss=0.7083  val_F1=0.6056
+
+  Best val F1-macro : 0.6056
+  Test classification report:
+              precision    recall  f1-score   support
+
+        DOWN       0.72      0.53      0.61       257
+        FLAT       0.52      0.71      0.60       269
+          UP       0.64      0.57      0.60       273
+
+    accuracy                           0.60       799
+   macro avg       0.62      0.60      0.60       799
+weighted avg       0.62      0.60      0.60       799
+
+
+============================================================
+Best model by validation F1-macro: RoBERTa  (F1=0.6440)
+============================================================
+
+Confusion matrices saved to 'model_results\confusion_matrices.png'
+Model summary saved to 'model_results\model_summary.csv'
+     Model  Val F1 Best
+   FinBERT  0.5970     
+   RoBERTa  0.6440    ✓
+DistilBERT  0.6056     
