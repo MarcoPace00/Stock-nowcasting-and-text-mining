@@ -14,7 +14,7 @@ import pandas as pd
 import finnhub
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
-API_KEY       = "d7pmvf9r01qosaap6qp0d7pmvf9r01qosaap6qpg"   # free key at https://finnhub.io
+API_KEY       = "YOUR_API_KEY"   # free key at https://finnhub.io
 OUTPUT_FILE   = "sp500_news.csv"
 MONTHS_BACK   = 3
 REQUESTS_PER_MIN = 55          # free tier allows 60; use 55 to stay safe
