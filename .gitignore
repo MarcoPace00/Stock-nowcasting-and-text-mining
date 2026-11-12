@@ -1,0 +1,4 @@
+*.csv
+!model_results/*.csv
+__pycache__/
+.env

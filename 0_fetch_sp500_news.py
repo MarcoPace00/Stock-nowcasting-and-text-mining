@@ -8,13 +8,14 @@ Requirements:
     pip install finnhub-python pandas requests
 """
 
+import os
 import time
 import datetime
 import pandas as pd
 import finnhub
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
-API_KEY       = "YOUR_API_KEY"   # free key at https://finnhub.io
+API_KEY       = os.environ.get("FINNHUB_API_KEY", "")   # free key at https://finnhub.io
 OUTPUT_FILE   = "sp500_news.csv"
 MONTHS_BACK   = 3
 REQUESTS_PER_MIN = 55          # free tier allows 60; use 55 to stay safe
@@ -88,6 +89,8 @@ def main():
     print(f"  {len(tickers)} tickers found")
 
     # ── Finnhub client ───────────────────────────────────────────────────────
+    if not API_KEY:
+        raise SystemExit("Set the FINNHUB_API_KEY environment variable first.")
     client = finnhub.Client(api_key=API_KEY)
 
     # ── Main loop ────────────────────────────────────────────────────────────

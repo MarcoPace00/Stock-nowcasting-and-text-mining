@@ -2,7 +2,7 @@
 
 A remake of a project developed during my Master in Quantitative Finance. The goal is to use machine learning to explain the relationship between financial news headlines and daily price movements — specifically, to predict whether a stock went **UP**, stayed **FLAT**, or went **DOWN** on the same day the news was published (*nowcasting*).
 
-The original project can be found in my [Text Mining](https://github.com/MarcoPace00/TextMining) repository.
+This is a cleaned-up rewrite of a Text Mining course project from my Master in Quantitative Finance.
 
 ---
 
@@ -17,9 +17,9 @@ STOCK_NOWCASTING/
 ├── 3_build_dataset.py             # Build the final training dataset
 ├── 4_train_evaluate_models.py     # Train, validate and test the models
 │
-├── sp500_news.csv                 # Raw news data
-├── sp500_news_with_prices.csv     # News enriched with price variation
-├── sp500_final_dataset.csv        # Final dataset ready for modelling
+├── sp500_news.csv                 # Raw news data              (generated, not committed)
+├── sp500_news_with_prices.csv     # + price variation          (generated, not committed)
+├── sp500_final_dataset.csv        # Final modelling dataset    (generated, not committed)
 │
 ├── Price_var_distribution/
 │   └── class_distribution.png    # Class distribution plot
@@ -64,7 +64,13 @@ The dataset is split into **train / validation / test (70/15/15)** with stratifi
 pip install finnhub-python yfinance pandas scikit-learn transformers torch accelerate matplotlib seaborn
 ```
 
-You will also need a free API key from [finnhub.io](https://finnhub.io), which should be set in `0_fetch_sp500_news.py`.
+You will also need a free API key from [finnhub.io](https://finnhub.io), exported as an environment variable:
+
+```bash
+export FINNHUB_API_KEY="..."
+```
+
+**Data is not included in this repository.** Finnhub's terms do not allow redistributing their news data, so the CSV files are generated locally by running scripts 0 → 3. Model results in `model_results/` are from the original run.
 
 ---
 
